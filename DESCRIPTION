@@ -2,15 +2,14 @@ Package: BuildABiocWorkshop2020
 Title: Bioconductor Workshop Template and Github Actions
 Version: 0.1.1
 Authors@R: 
-    person(given = "Sean",
-           family = "Davis",
-           role = c("aut", "cre"),
-           email = "seandavi@gmail.com",
-           comment = c(ORCID = "your-orc-id-here"))
-Description: This package serves as a template for using github actions to 
-    prepare a Bioconductor Workshop package for use. In particular,
-    a pkgdown website and docker image are generated based on workflow 
-    settings. 
+    person(given = "Joshua",
+           family = "Sodicoff",
+           email = "sodicoff@umichedu",
+           comment = c(ORCID = "0000-0001-5182-960X"))
+Description: This webpage demonstrates several of the features in the LIGER package 
+    that can be used to visualize and quantify the output of integrating spatial
+    transcriptomic and scRNAseq data. Submitted to BIRS Mathematical Frameworks for
+    Integrative Analysis of Emerging Biological Data Types, 2020
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -18,11 +17,15 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.0
 Depends: 
     Biobase
+    MacoskoLab/liger
+    NMF
+    ggplot2
+    cowplot
 Suggests: 
     knitr,
     rmarkdown,
     pkgdown
 URL: https://seandavi.github.io/BuildABiocWorkshop2020/
-BugReports: https://github.com/seandavi/BuildABiocWorkshop2020/issues/new/choose
+BugReports: https://github.com/jsodicoff/birs_liger_integration/issues/new/choose
 VignetteBuilder: knitr
 DockerImage: seandavi/buildabiocworkshop2020:latest
