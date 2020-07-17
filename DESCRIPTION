@@ -25,7 +25,7 @@ Suggests:
     knitr,
     rmarkdown,
     pkgdown
-URL: https://seandavi.github.io/BuildABiocWorkshop2020/
+URL: https://sodicoff.github.io/birs_liger_integration/
 BugReports: https://github.com/jsodicoff/birs_liger_integration/issues/new/choose
 VignetteBuilder: knitr
-DockerImage: seandavi/buildabiocworkshop2020:latest
+DockerImage: sodicoff/birsbio2020.seqfish.liger_int:latest
