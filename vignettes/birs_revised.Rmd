@@ -2,7 +2,11 @@
 title: "Utilizing LIGER for the integration of spatial transcriptomic data"
 author: "Joshua Sodicoff"
 date: "7/17/2020"
-output: html_document
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Utilizing LIGER for the integration of spatial transcriptomic data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r setup, include=FALSE}
@@ -10,6 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(liger)
 library(magrittr)
 library(ggplot2)
+library(NNLM)
 ggplot2::theme_set(theme_cowplot())
 load("sodicoff_birs.RData")
 ```
@@ -72,7 +77,7 @@ tasic_plots[[2]]
 tasic_plot_known_clust[[2]]
 ```
 
-```{r plot_tasic, message=F, warning=F}
+```{r plot_seq, message=F, warning=F}
 names(seq_obj@clusters) = colnames(seqfish)
 seq_plots = plotByDatasetAndCluster(seq_obj, return.plots = T)
 seq_plot_known_clust = plotByDatasetAndCluster(seq_obj, clusters = seq_clust, return.plots = T)
@@ -116,7 +121,7 @@ int_plot_known_clust[[2]]
 
 We calculate clustering accuracy, as well as agreement and alignment
 
-```{r stats_ind, message=F, warning=F}
+```{r stats_int, message=F, warning=F}
 print(paste("overall ARI:",calcARI(int_obj, int_clust)))
 print(paste("overall purity:",calcPurity(int_obj, int_clust)))
 print(paste("agreement:",calcAgreement(int_obj)))
