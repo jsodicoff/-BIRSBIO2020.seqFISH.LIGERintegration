@@ -1,0 +1,124 @@
+---
+title: "Utilizing LIGER for the integration of spatial transcriptomic data"
+author: "Joshua Sodicoff"
+date: "7/17/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(liger)
+library(magrittr)
+library(ggplot2)
+ggplot2::theme_set(theme_cowplot())
+load("sodicoff_birs.RData")
+```
+
+## Updates
+
+This vignette will differ somewhat from my original presentation, namely in that it does not require access to any datasets outside of those provided for the hackathon. Likewise, instead of comparing an analysis across spatial modalities, it will demonstrate the method for generating the results required for that on the conference data.
+
+#Viewing the data
+
+```{r tasic}
+tasic[1:10,1:10]
+```
+
+```{r tasic_clust}
+tasic_clust[1:10]
+```
+
+```{r seqfish}
+seqfish[1:10,1:10]
+```
+
+```{r seqfish_clust}
+seq_clust[1:10]
+```
+## Separate integrations
+
+To establish a baseline as the level of structure and clustering accuracy thaat can be found for each dataset with LIGER, we run individual analyses.
+
+```{r tasic_analysis, message=F, warning=F}
+tasic_obj = createLiger(list(tasic = tasic))
+tasic_obj %<>% liger::normalize() %>% 
+    liger::selectGenes() %>% 
+    liger::scaleNotCenter() %>% 
+    liger::optimizeALS(k = 20) %>% 
+    liger::quantile_norm() %>% 
+    liger::louvainCluster() %>% 
+    liger::runUMAP()
+
+```
+
+```{r seqfish_analysis, message=F, warning=F}
+seq_obj = createLiger(list(seqfish = seqfish))
+seq_obj %<>% liger::normalize() %>% 
+    liger::selectGenes() %>% 
+    liger::scaleNotCenter() %>% 
+    liger::optimizeALS(k = 20) %>% 
+    liger::quantile_norm() %>% 
+    liger::louvainCluster() %>% 
+    liger::runUMAP()
+```
+
+We then plot the evaluated data by generated and known cluster
+
+```{r plot_tasic, message=F, warning=F}
+names(tasic_obj@clusters) = colnames(tasic)
+tasic_plots = plotByDatasetAndCluster(tasic_obj, return.plots = T)
+tasic_plot_known_clust = plotByDatasetAndCluster(tasic_obj, clusters = tasic_clust, return.plots = T)
+tasic_plots[[2]]
+tasic_plot_known_clust[[2]]
+```
+
+```{r plot_tasic, message=F, warning=F}
+names(seq_obj@clusters) = colnames(seqfish)
+seq_plots = plotByDatasetAndCluster(seq_obj, return.plots = T)
+seq_plot_known_clust = plotByDatasetAndCluster(seq_obj, clusters = seq_clust, return.plots = T)
+seq_plots[[2]]
+seq_plot_known_clust[[2]]
+```
+
+We calculate metrics of clustering accuracy to compare.
+
+```{r stats_ind, message=F, warning=F}
+print(paste("tasic ARI:",calcARI(tasic_obj, tasic_clust)))
+print(paste("tasic purity:",calcPurity(tasic_obj, tasic_clust)))
+print(paste("seqfish ARI:",calcARI(seq_obj, seq_clust)))
+print(paste("seqfish purity:",calcPurity(seq_obj, seq_clust)))
+```
+
+Now, let's try to integrate the datasets.
+
+```{r int_obj, message=F, warning=F}
+int_obj = createLiger(list(tasic = tasic, seqfish = seqfish))
+int_obj %<>% liger::normalize() %>% 
+    liger::selectGenes() %>% 
+    liger::scaleNotCenter() %>% 
+    liger::optimizeALS(k = 20) %>% 
+    liger::quantile_norm() %>% 
+    liger::louvainCluster() %>% 
+    liger::runUMAP()
+```
+
+Again, we plot the output, including one showing dataset of origin
+
+```{r plot_int, message=F, warning=F}
+names(int_obj@clusters) = c(colnames(tasic), colnames(seqfish))
+int_clust = as.factor(c(as.character(tasic_clust), as.character(seq_clust))); names(int_clust) = c(names(tasic_clust), names(seq_clust))
+int_plots = plotByDatasetAndCluster(int_obj, return.plots = T)
+int_plot_known_clust = plotByDatasetAndCluster(int_obj, clusters = int_clust, return.plots = T)
+int_plots[[1]]
+int_plots[[2]]
+int_plot_known_clust[[2]]
+```
+
+We calculate clustering accuracy, as well as agreement and alignment
+
+```{r stats_ind, message=F, warning=F}
+print(paste("overall ARI:",calcARI(int_obj, int_clust)))
+print(paste("overall purity:",calcPurity(int_obj, int_clust)))
+print(paste("agreement:",calcAgreement(int_obj)))
+print(paste("alignment:",calcAlignment(int_obj)))
+```
