@@ -1,11 +1,8 @@
-Package: BuildABiocWorkshop2020
-Title: Bioconductor Workshop Template and Github Actions
+Package: birsbio2020.seqfish.ligerint
+Title: Utilizing LIGER for the integration of spatial transcriptomic data
 Version: 0.1.1
-Authors@R: 
-    person(given = "Joshua",
-           family = "Sodicoff",
-           email = "sodicoff@umichedu",
-           comment = c(ORCID = "0000-0001-5182-960X"))
+Author: Joshua Sodicoff
+Maintainer: Joshua Sodicoff <sodicoff@umich.edu>
 Description: This webpage demonstrates several of the features in the LIGER package 
     that can be used to visualize and quantify the output of integrating spatial
     transcriptomic and scRNAseq data. Submitted to BIRS Mathematical Frameworks for
@@ -14,17 +11,20 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 Depends: 
-    Biobase
-    MacoskoLab/liger
-    NMF
-    ggplot2
-    cowplot
+    Biobase,
+    NNLM,
+    ggplot2,
+    cowplot,
+    Seurat,
+    liger
+Remotes:
+    MacoskoLab/liger,
+    r-lib/pkgdown
 Suggests: 
     knitr,
-    rmarkdown,
-    pkgdown
+    rmarkdown
 URL: https://sodicoff.github.io/birs_liger_integration/
 BugReports: https://github.com/jsodicoff/birs_liger_integration/issues/new/choose
 VignetteBuilder: knitr
