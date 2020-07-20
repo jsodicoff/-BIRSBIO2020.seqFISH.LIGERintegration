@@ -21,7 +21,8 @@ Depends:
     liger
 Remotes:
     MacoskoLab/liger,
-    r-lib/pkgdown
+    r-lib/pkgdown,
+    linxihui/NNLM
 Suggests: 
     knitr,
     rmarkdown
