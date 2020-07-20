@@ -21,11 +21,11 @@ Depends:
     liger
 Remotes:
     MacoskoLab/liger,
-    r-lib/pkgdown,
     linxihui/NNLM
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    pkgdown
 URL: https://sodicoff.github.io/birs_liger_integration/
 BugReports: https://github.com/jsodicoff/birs_liger_integration/issues/new/choose
 VignetteBuilder: knitr
