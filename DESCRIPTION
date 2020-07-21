@@ -26,7 +26,7 @@ Suggests:
     knitr,
     rmarkdown,
     pkgdown
-URL: https://sodicoff.github.io/birs_liger_integration/
+URL: https://sodicoff.github.io/BIRSBIO2020.seqFISH.LIGERintegration/
 BugReports: https://github.com/jsodicoff/birs_liger_integration/issues/new/choose
 VignetteBuilder: knitr
 DockerImage: sodicoff/birsbio2020.seqfish.liger_int:latest
