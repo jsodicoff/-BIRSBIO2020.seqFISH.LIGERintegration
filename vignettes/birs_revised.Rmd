@@ -21,9 +21,11 @@ load("sodicoff_birs.RData")
 
 ## Updates
 
-This vignette will differ somewhat from my original presentation, namely in that it does not require access to any datasets outside of those provided for the hackathon. Likewise, instead of comparing an analysis across spatial modalities, it will demonstrate the method for generating the results required for that on the conference data.
+This vignette will differ somewhat from my original presentation, namely in that it does not require access to any datasets outside of those provided for the hackathon. Likewise, instead of comparing an analysis across spatial modalities, it will demonstrate the method for generating the results required for that on the conference data. I hope this vignette helps you learn how to use Liger for this task and interpret UMAP plots and clustering metrics to determine the accuracy of your integration
 
 #Viewing the data
+
+First, let's preview the data to ensure that gene features comprise the rows, samples comprise the columns, and known cluster assignments are factor vectors.
 
 ```{r tasic}
 tasic[1:10,1:10]
@@ -42,8 +44,18 @@ seq_clust[1:10]
 ```
 ## Separate integrations
 
-To establish a baseline as the level of structure and clustering accuracy thaat can be found for each dataset with LIGER, we run individual analyses.
+To establish a baseline as the level of structure and clustering accuracy that can be found for each dataset with LIGER, we run individual analyses.
 
+The analysis includes
+1. Normalization, to standardize the counts per sample
+2. Variable gene selection
+3. Scaling, but not centering as not to violate the nonnegativity constraint
+4. Integrative non-negative matrix factorization, or essentially just NMF in the case shown here in which one dataset is provided
+5. Quantile normalization, primarily used for aligning multiple datasets.
+6. Cluster identification with the Louvain algorithm
+7. UMAP, for visualization
+
+First, we run the analysis on the scRNA-seq data
 ```{r tasic_analysis, message=F, warning=F}
 tasic_obj = createLiger(list(tasic = tasic))
 tasic_obj %<>% liger::normalize() %>% 
@@ -56,6 +68,7 @@ tasic_obj %<>% liger::normalize() %>%
 
 ```
 
+Then, we run it on the seqFISH data
 ```{r seqfish_analysis, message=F, warning=F}
 seq_obj = createLiger(list(seqfish = seqfish))
 seq_obj %<>% liger::normalize() %>% 
@@ -67,7 +80,7 @@ seq_obj %<>% liger::normalize() %>%
     liger::runUMAP()
 ```
 
-We then plot the evaluated data by generated and known cluster
+We then plot the evaluated data by generated and known cluster for the scRNA-seq
 
 ```{r plot_tasic, message=F, warning=F}
 names(tasic_obj@clusters) = colnames(tasic)
@@ -76,7 +89,7 @@ tasic_plot_known_clust = plotByDatasetAndCluster(tasic_obj, clusters = tasic_clu
 tasic_plots[[2]]
 tasic_plot_known_clust[[2]]
 ```
-
+and then the spatial data
 ```{r plot_seq, message=F, warning=F}
 names(seq_obj@clusters) = colnames(seqfish)
 seq_plots = plotByDatasetAndCluster(seq_obj, return.plots = T)
@@ -84,8 +97,11 @@ seq_plot_known_clust = plotByDatasetAndCluster(seq_obj, clusters = seq_clust, re
 seq_plots[[2]]
 seq_plot_known_clust[[2]]
 ```
+We can make a few qualitative obeservations:
+* Neither analysis seems to have a lot of structure, resulting in the UMAP plots coming out rather "blobby".
+* The known clusters in the scRNA-seq seem to map slightly better to the generated clusters than the spatial data.
 
-We calculate metrics of clustering accuracy to compare.
+We calculate metrics of clustering accuracy to compare. ARI is the adjusted Rand index, a metric based on the number of cell-cell pairs known to reside in the same and different clusters and adjusted to account for random chance. Purity is found by dividing the total number of correctly identified cells in a cluster over the total number of cells in that cluster.
 
 ```{r stats_ind, message=F, warning=F}
 print(paste("tasic ARI:",calcARI(tasic_obj, tasic_clust)))
@@ -93,8 +109,9 @@ print(paste("tasic purity:",calcPurity(tasic_obj, tasic_clust)))
 print(paste("seqfish ARI:",calcARI(seq_obj, seq_clust)))
 print(paste("seqfish purity:",calcPurity(seq_obj, seq_clust)))
 ```
+This confirms that the single cell data had somewhat better clustering accuracy.
 
-Now, let's try to integrate the datasets.
+Now, let's try to integrate the datasets, using almost the same workflow as before but with both datasets provided for object creation.
 
 ```{r int_obj, message=F, warning=F}
 int_obj = createLiger(list(tasic = tasic, seqfish = seqfish))
@@ -127,3 +144,5 @@ print(paste("overall purity:",calcPurity(int_obj, int_clust)))
 print(paste("agreement:",calcAgreement(int_obj)))
 print(paste("alignment:",calcAlignment(int_obj)))
 ```
+
+This seems to demonstrate that the clustering accuracy of the integration (a surrogate for how well the method divided the cell types) falls somehwere between solely using the spatial data and scRNA-seq. Additionally, the agreement metric is relatively low (on its scale of 0 to 1). This implies that the integration was not very informative and relied heavily on distortion of the data for alignment. 
