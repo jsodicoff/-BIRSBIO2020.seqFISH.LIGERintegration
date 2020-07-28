@@ -23,6 +23,10 @@ load("sodicoff_birs.RData")
 
 This vignette will differ somewhat from my original presentation, namely in that it does not require access to any datasets outside of those provided for the hackathon. Likewise, instead of comparing an analysis across spatial modalities, it will demonstrate the method for generating the results required for that on the conference data. I hope this vignette helps you learn how to use Liger for this task and interpret UMAP plots and clustering metrics to determine the accuracy of your integration
 
+
+## Overview
+In this analysis, the additional structure found by combining spatial and single cell transcriptomic datasets with Liger is demonstrated. From the separate and integrative analyses, plots of identified and known clusters are generated, and metrics of integration performance are compared in context.
+
 #Viewing the data
 
 First, let's preview the data to ensure that gene features comprise the rows, samples comprise the columns, and known cluster assignments are factor vectors.
