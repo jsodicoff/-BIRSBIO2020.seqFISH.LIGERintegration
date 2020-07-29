@@ -185,75 +185,8 @@
     <span class="kw pkg">liger</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/liger/man/quantile_norm.html">quantile_norm</a></span>() <span class="kw">%&gt;%</span>
     <span class="kw pkg">liger</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/liger/man/louvainCluster.html">louvainCluster</a></span>() <span class="kw">%&gt;%</span>
     <span class="kw pkg">liger</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/liger/man/runUMAP.html">runUMAP</a></span>()</pre></body></html></div>
-<pre><code>## 
-  |                                                                            
-  |                                                                      |   0%
-  |                                                                            
-  |==                                                                    |   3%
-  |                                                                            
-  |=====                                                                 |   7%
-  |                                                                            
-  |=======                                                               |  10%
-  |                                                                            
-  |=========                                                             |  13%
-  |                                                                            
-  |============                                                          |  17%
-  |                                                                            
-  |==============                                                        |  20%
-  |                                                                            
-  |================                                                      |  23%
-  |                                                                            
-  |===================                                                   |  27%
-  |                                                                            
-  |=====================                                                 |  30%
-  |                                                                            
-  |=======================                                               |  33%
-  |                                                                            
-  |==========================                                            |  37%
-  |                                                                            
-  |============================                                          |  40%
-  |                                                                            
-  |==============================                                        |  43%
-  |                                                                            
-  |=================================                                     |  47%
-  |                                                                            
-  |===================================                                   |  50%
-  |                                                                            
-  |=====================================                                 |  53%
-  |                                                                            
-  |========================================                              |  57%
-  |                                                                            
-  |==========================================                            |  60%
-  |                                                                            
-  |============================================                          |  63%
-  |                                                                            
-  |===============================================                       |  67%
-  |                                                                            
-  |=================================================                     |  70%
-  |                                                                            
-  |===================================================                   |  73%
-  |                                                                            
-  |======================================================                |  77%
-  |                                                                            
-  |========================================================              |  80%
-  |                                                                            
-  |==========================================================            |  83%
-  |                                                                            
-  |=============================================================         |  87%
-  |                                                                            
-  |===============================================================       |  90%
-  |                                                                            
-  |=================================================================     |  93%
-  |                                                                            
-  |====================================================================  |  97%
-  |                                                                            
-  |======================================================================| 100%
-## Finished in 24.28443 secs, 30 iterations.
-## Max iterations set: 30.
-## Final objective delta: 0.0004846784.
-## Best results with seed 1.</code></pre>
 <p>Then, we run it on the seqFISH data</p>
-<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="no">seq_obj</span> <span class="kw">=</span> <span class="fu">createLiger</span>(<span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">seqfish</span> <span class="kw">=</span> <span class="no">seqfish</span>))
+<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="no">seq_obj</span> <span class="kw">=</span> <span class="fu">createLiger</span>(<span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">seqfish</span> <span class="kw">=</span> <span class="no">seqfish</span>))
 <span class="no">seq_obj</span> <span class="kw">%&lt;&gt;%</span> <span class="kw pkg">liger</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/liger/man/normalize.html">normalize</a></span>() <span class="kw">%&gt;%</span>
     <span class="kw pkg">liger</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/liger/man/selectGenes.html">selectGenes</a></span>() <span class="kw">%&gt;%</span>
     <span class="kw pkg">liger</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/liger/man/scaleNotCenter.html">scaleNotCenter</a></span>() <span class="kw">%&gt;%</span>
@@ -261,100 +194,33 @@
     <span class="kw pkg">liger</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/liger/man/quantile_norm.html">quantile_norm</a></span>() <span class="kw">%&gt;%</span>
     <span class="kw pkg">liger</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/liger/man/louvainCluster.html">louvainCluster</a></span>() <span class="kw">%&gt;%</span>
     <span class="kw pkg">liger</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/liger/man/runUMAP.html">runUMAP</a></span>()</pre></body></html></div>
-<pre><code>## 
-  |                                                                            
-  |                                                                      |   0%
-  |                                                                            
-  |==                                                                    |   3%
-  |                                                                            
-  |=====                                                                 |   7%
-  |                                                                            
-  |=======                                                               |  10%
-  |                                                                            
-  |=========                                                             |  13%
-  |                                                                            
-  |============                                                          |  17%
-  |                                                                            
-  |==============                                                        |  20%
-  |                                                                            
-  |================                                                      |  23%
-  |                                                                            
-  |===================                                                   |  27%
-  |                                                                            
-  |=====================                                                 |  30%
-  |                                                                            
-  |=======================                                               |  33%
-  |                                                                            
-  |==========================                                            |  37%
-  |                                                                            
-  |============================                                          |  40%
-  |                                                                            
-  |==============================                                        |  43%
-  |                                                                            
-  |=================================                                     |  47%
-  |                                                                            
-  |===================================                                   |  50%
-  |                                                                            
-  |=====================================                                 |  53%
-  |                                                                            
-  |========================================                              |  57%
-  |                                                                            
-  |==========================================                            |  60%
-  |                                                                            
-  |============================================                          |  63%
-  |                                                                            
-  |===============================================                       |  67%
-  |                                                                            
-  |=================================================                     |  70%
-  |                                                                            
-  |===================================================                   |  73%
-  |                                                                            
-  |======================================================                |  77%
-  |                                                                            
-  |========================================================              |  80%
-  |                                                                            
-  |==========================================================            |  83%
-  |                                                                            
-  |=============================================================         |  87%
-  |                                                                            
-  |===============================================================       |  90%
-  |                                                                            
-  |=================================================================     |  93%
-  |                                                                            
-  |====================================================================  |  97%
-  |                                                                            
-  |======================================================================| 100%
-## Finished in 26.03638 secs, 30 iterations.
-## Max iterations set: 30.
-## Final objective delta: 0.0003805545.
-## Best results with seed 1.</code></pre>
 <p>We then plot the evaluated data by generated and known cluster for the scRNA-seq</p>
-<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="no">tasic_obj</span>@<span class="kw">clusters</span>) <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(<span class="no">tasic</span>)
+<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="no">tasic_obj</span>@<span class="kw">clusters</span>) <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(<span class="no">tasic</span>)
 <span class="no">tasic_plots</span> <span class="kw">=</span> <span class="fu">plotByDatasetAndCluster</span>(<span class="no">tasic_obj</span>, <span class="kw">return.plots</span> <span class="kw">=</span> <span class="no">T</span>)
 <span class="no">tasic_plot_known_clust</span> <span class="kw">=</span> <span class="fu">plotByDatasetAndCluster</span>(<span class="no">tasic_obj</span>, <span class="kw">clusters</span> <span class="kw">=</span> <span class="no">tasic_clust</span>, <span class="kw">return.plots</span> <span class="kw">=</span> <span class="no">T</span>)
 <span class="no">tasic_plots</span><span class="kw">[[</span><span class="fl">2</span>]]</pre></body></html></div>
 <p><img src="birs_revised_files/figure-html/plot_tasic-1.png" width="700"></p>
-<div class="sourceCode" id="cb14"><html><body><pre class="r"><span class="no">tasic_plot_known_clust</span><span class="kw">[[</span><span class="fl">2</span>]]</pre></body></html></div>
+<div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="no">tasic_plot_known_clust</span><span class="kw">[[</span><span class="fl">2</span>]]</pre></body></html></div>
 <p><img src="birs_revised_files/figure-html/plot_tasic-2.png" width="700"> and then the spatial data</p>
-<div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="no">seq_obj</span>@<span class="kw">clusters</span>) <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(<span class="no">seqfish</span>)
+<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="no">seq_obj</span>@<span class="kw">clusters</span>) <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(<span class="no">seqfish</span>)
 <span class="no">seq_plots</span> <span class="kw">=</span> <span class="fu">plotByDatasetAndCluster</span>(<span class="no">seq_obj</span>, <span class="kw">return.plots</span> <span class="kw">=</span> <span class="no">T</span>)
 <span class="no">seq_plot_known_clust</span> <span class="kw">=</span> <span class="fu">plotByDatasetAndCluster</span>(<span class="no">seq_obj</span>, <span class="kw">clusters</span> <span class="kw">=</span> <span class="no">seq_clust</span>, <span class="kw">return.plots</span> <span class="kw">=</span> <span class="no">T</span>)
 <span class="no">seq_plots</span><span class="kw">[[</span><span class="fl">2</span>]]</pre></body></html></div>
 <p><img src="birs_revised_files/figure-html/plot_seq-1.png" width="700"></p>
-<div class="sourceCode" id="cb16"><html><body><pre class="r"><span class="no">seq_plot_known_clust</span><span class="kw">[[</span><span class="fl">2</span>]]</pre></body></html></div>
+<div class="sourceCode" id="cb14"><html><body><pre class="r"><span class="no">seq_plot_known_clust</span><span class="kw">[[</span><span class="fl">2</span>]]</pre></body></html></div>
 <p><img src="birs_revised_files/figure-html/plot_seq-2.png" width="700"> We can make a few qualitative obeservations: * Neither analysis seems to have a lot of structure, resulting in the UMAP plots coming out rather “blobby”. * The known clusters in the scRNA-seq seem to map slightly better to the generated clusters than the spatial data.</p>
 <p>We calculate metrics of clustering accuracy to compare. ARI is the adjusted Rand index, a metric based on the number of cell-cell pairs known to reside in the same and different clusters and adjusted to account for random chance. Purity is found by dividing the total number of correctly identified cells in a cluster over the total number of cells in that cluster.</p>
-<div class="sourceCode" id="cb17"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"tasic ARI:"</span>,<span class="fu">calcARI</span>(<span class="no">tasic_obj</span>, <span class="no">tasic_clust</span>)))</pre></body></html></div>
+<div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"tasic ARI:"</span>,<span class="fu">calcARI</span>(<span class="no">tasic_obj</span>, <span class="no">tasic_clust</span>)))</pre></body></html></div>
 <pre><code>## [1] "tasic ARI: 0.124928479183329"</code></pre>
-<div class="sourceCode" id="cb19"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"tasic purity:"</span>,<span class="fu">calcPurity</span>(<span class="no">tasic_obj</span>, <span class="no">tasic_clust</span>)))</pre></body></html></div>
+<div class="sourceCode" id="cb17"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"tasic purity:"</span>,<span class="fu">calcPurity</span>(<span class="no">tasic_obj</span>, <span class="no">tasic_clust</span>)))</pre></body></html></div>
 <pre><code>## [1] "tasic purity: 0.737086477074869"</code></pre>
-<div class="sourceCode" id="cb21"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"seqfish ARI:"</span>,<span class="fu">calcARI</span>(<span class="no">seq_obj</span>, <span class="no">seq_clust</span>)))</pre></body></html></div>
+<div class="sourceCode" id="cb19"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"seqfish ARI:"</span>,<span class="fu">calcARI</span>(<span class="no">seq_obj</span>, <span class="no">seq_clust</span>)))</pre></body></html></div>
 <pre><code>## [1] "seqfish ARI: 0.00922479431962868"</code></pre>
-<div class="sourceCode" id="cb23"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"seqfish purity:"</span>,<span class="fu">calcPurity</span>(<span class="no">seq_obj</span>, <span class="no">seq_clust</span>)))</pre></body></html></div>
+<div class="sourceCode" id="cb21"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"seqfish purity:"</span>,<span class="fu">calcPurity</span>(<span class="no">seq_obj</span>, <span class="no">seq_clust</span>)))</pre></body></html></div>
 <pre><code>## [1] "seqfish purity: 0.546023794614903"</code></pre>
 <p>This confirms that the single cell data had somewhat better clustering accuracy.</p>
 <p>Now, let’s try to integrate the datasets, using almost the same workflow as before but with both datasets provided for object creation.</p>
-<div class="sourceCode" id="cb25"><html><body><pre class="r"><span class="no">int_obj</span> <span class="kw">=</span> <span class="fu">createLiger</span>(<span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">tasic</span> <span class="kw">=</span> <span class="no">tasic</span>, <span class="kw">seqfish</span> <span class="kw">=</span> <span class="no">seqfish</span>))
+<div class="sourceCode" id="cb23"><html><body><pre class="r"><span class="no">int_obj</span> <span class="kw">=</span> <span class="fu">createLiger</span>(<span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">tasic</span> <span class="kw">=</span> <span class="no">tasic</span>, <span class="kw">seqfish</span> <span class="kw">=</span> <span class="no">seqfish</span>))
 <span class="no">int_obj</span> <span class="kw">%&lt;&gt;%</span> <span class="kw pkg">liger</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/liger/man/normalize.html">normalize</a></span>() <span class="kw">%&gt;%</span>
     <span class="kw pkg">liger</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/liger/man/selectGenes.html">selectGenes</a></span>() <span class="kw">%&gt;%</span>
     <span class="kw pkg">liger</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/liger/man/scaleNotCenter.html">scaleNotCenter</a></span>() <span class="kw">%&gt;%</span>
@@ -362,97 +228,30 @@
     <span class="kw pkg">liger</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/liger/man/quantile_norm.html">quantile_norm</a></span>() <span class="kw">%&gt;%</span>
     <span class="kw pkg">liger</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/liger/man/louvainCluster.html">louvainCluster</a></span>() <span class="kw">%&gt;%</span>
     <span class="kw pkg">liger</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/liger/man/runUMAP.html">runUMAP</a></span>()</pre></body></html></div>
-<pre><code>## 
-  |                                                                            
-  |                                                                      |   0%
-  |                                                                            
-  |==                                                                    |   3%
-  |                                                                            
-  |=====                                                                 |   7%
-  |                                                                            
-  |=======                                                               |  10%
-  |                                                                            
-  |=========                                                             |  13%
-  |                                                                            
-  |============                                                          |  17%
-  |                                                                            
-  |==============                                                        |  20%
-  |                                                                            
-  |================                                                      |  23%
-  |                                                                            
-  |===================                                                   |  27%
-  |                                                                            
-  |=====================                                                 |  30%
-  |                                                                            
-  |=======================                                               |  33%
-  |                                                                            
-  |==========================                                            |  37%
-  |                                                                            
-  |============================                                          |  40%
-  |                                                                            
-  |==============================                                        |  43%
-  |                                                                            
-  |=================================                                     |  47%
-  |                                                                            
-  |===================================                                   |  50%
-  |                                                                            
-  |=====================================                                 |  53%
-  |                                                                            
-  |========================================                              |  57%
-  |                                                                            
-  |==========================================                            |  60%
-  |                                                                            
-  |============================================                          |  63%
-  |                                                                            
-  |===============================================                       |  67%
-  |                                                                            
-  |=================================================                     |  70%
-  |                                                                            
-  |===================================================                   |  73%
-  |                                                                            
-  |======================================================                |  77%
-  |                                                                            
-  |========================================================              |  80%
-  |                                                                            
-  |==========================================================            |  83%
-  |                                                                            
-  |=============================================================         |  87%
-  |                                                                            
-  |===============================================================       |  90%
-  |                                                                            
-  |=================================================================     |  93%
-  |                                                                            
-  |====================================================================  |  97%
-  |                                                                            
-  |======================================================================| 100%
-## Finished in 30.49379 secs, 30 iterations.
-## Max iterations set: 30.
-## Final objective delta: 0.0007783069.
-## Best results with seed 1.</code></pre>
 <p>Again, we plot the output, including one showing dataset of origin</p>
-<div class="sourceCode" id="cb27"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="no">int_obj</span>@<span class="kw">clusters</span>) <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(<span class="no">tasic</span>), <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(<span class="no">seqfish</span>))
+<div class="sourceCode" id="cb24"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="no">int_obj</span>@<span class="kw">clusters</span>) <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(<span class="no">tasic</span>), <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(<span class="no">seqfish</span>))
 <span class="no">int_clust</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>(<span class="no">tasic_clust</span>), <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>(<span class="no">seq_clust</span>))); <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="no">int_clust</span>) <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="no">tasic_clust</span>), <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="no">seq_clust</span>))
 <span class="no">int_plots</span> <span class="kw">=</span> <span class="fu">plotByDatasetAndCluster</span>(<span class="no">int_obj</span>, <span class="kw">return.plots</span> <span class="kw">=</span> <span class="no">T</span>)
 <span class="no">int_plot_known_clust</span> <span class="kw">=</span> <span class="fu">plotByDatasetAndCluster</span>(<span class="no">int_obj</span>, <span class="kw">clusters</span> <span class="kw">=</span> <span class="no">int_clust</span>, <span class="kw">return.plots</span> <span class="kw">=</span> <span class="no">T</span>)
 <span class="no">int_plots</span><span class="kw">[[</span><span class="fl">1</span>]]</pre></body></html></div>
 <p><img src="birs_revised_files/figure-html/plot_int-1.png" width="700"></p>
-<div class="sourceCode" id="cb28"><html><body><pre class="r"><span class="no">int_plots</span><span class="kw">[[</span><span class="fl">2</span>]]</pre></body></html></div>
+<div class="sourceCode" id="cb25"><html><body><pre class="r"><span class="no">int_plots</span><span class="kw">[[</span><span class="fl">2</span>]]</pre></body></html></div>
 <p><img src="birs_revised_files/figure-html/plot_int-2.png" width="700"></p>
-<div class="sourceCode" id="cb29"><html><body><pre class="r"><span class="no">int_plot_known_clust</span><span class="kw">[[</span><span class="fl">2</span>]]</pre></body></html></div>
+<div class="sourceCode" id="cb26"><html><body><pre class="r"><span class="no">int_plot_known_clust</span><span class="kw">[[</span><span class="fl">2</span>]]</pre></body></html></div>
 <p><img src="birs_revised_files/figure-html/plot_int-3.png" width="700"></p>
 <p>We calculate clustering accuracy, as well as agreement and alignment</p>
-<div class="sourceCode" id="cb30"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"overall ARI:"</span>,<span class="fu">calcARI</span>(<span class="no">int_obj</span>, <span class="no">int_clust</span>)))</pre></body></html></div>
+<div class="sourceCode" id="cb27"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"overall ARI:"</span>,<span class="fu">calcARI</span>(<span class="no">int_obj</span>, <span class="no">int_clust</span>)))</pre></body></html></div>
 <pre><code>## [1] "overall ARI: 0.03990832682262"</code></pre>
-<div class="sourceCode" id="cb32"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"overall purity:"</span>,<span class="fu">calcPurity</span>(<span class="no">int_obj</span>, <span class="no">int_clust</span>)))</pre></body></html></div>
+<div class="sourceCode" id="cb29"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"overall purity:"</span>,<span class="fu">calcPurity</span>(<span class="no">int_obj</span>, <span class="no">int_clust</span>)))</pre></body></html></div>
 <pre><code>## [1] "overall purity: 0.621084337349398"</code></pre>
-<div class="sourceCode" id="cb34"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"agreement:"</span>,<span class="fu">calcAgreement</span>(<span class="no">int_obj</span>)))</pre></body></html></div>
+<div class="sourceCode" id="cb31"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"agreement:"</span>,<span class="fu">calcAgreement</span>(<span class="no">int_obj</span>)))</pre></body></html></div>
 <pre><code>## [1] "Reducing dimensionality using NMF"
 ## 
-## Converged in 0.02437544 seconds, 167 iterations. Objective: 5408.016 
+## Converged in 0.01548982 seconds, 167 iterations. Objective: 5408.016 
 ## 
-## Converged in 0.01642847 seconds, 188 iterations. Objective: 8577.805 
+## Converged in 0.01904821 seconds, 188 iterations. Objective: 8577.805 
 ## [1] "agreement: 0.089592886480605"</code></pre>
-<div class="sourceCode" id="cb36"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"alignment:"</span>,<span class="fu">calcAlignment</span>(<span class="no">int_obj</span>)))</pre></body></html></div>
+<div class="sourceCode" id="cb33"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"alignment:"</span>,<span class="fu">calcAlignment</span>(<span class="no">int_obj</span>)))</pre></body></html></div>
 <pre><code>## [1] "alignment: 0.804064439004953"</code></pre>
 <p>This seems to demonstrate that the clustering accuracy of the integration (a surrogate for how well the method divided the cell types) falls somehwere between solely using the spatial data and scRNA-seq. Additionally, the agreement metric is relatively low (on its scale of 0 to 1). This implies that the integration was not very informative and relied heavily on distortion of the data for alignment.</p>
 </div>
