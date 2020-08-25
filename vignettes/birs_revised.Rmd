@@ -61,7 +61,7 @@ The analysis includes
 
 First, we run the analysis on the scRNA-seq data
 ```{r tasic_analysis, message=F, warning=F, results = "hide"}
-tasic_obj = createLiger(list(tasic = tasic))
+tasic_obj = createLiger(list(sc_rnaseq = tasic))
 tasic_obj %<>% liger::normalize() %>% 
     liger::selectGenes() %>% 
     liger::scaleNotCenter() %>% 
@@ -74,7 +74,7 @@ tasic_obj %<>% liger::normalize() %>%
 
 Then, we run it on the seqFISH data
 ```{r seqfish_analysis, message=F, warning=F, results = "hide"}
-seq_obj = createLiger(list(seqfish = seqfish))
+seq_obj = createLiger(list(spatial = seqfish))
 seq_obj %<>% liger::normalize() %>% 
     liger::selectGenes() %>% 
     liger::scaleNotCenter() %>% 
@@ -118,7 +118,7 @@ This confirms that the single cell data had somewhat better clustering accuracy.
 Now, let's try to integrate the datasets, using almost the same workflow as before but with both datasets provided for object creation.
 
 ```{r int_obj, message=F, warning=F, results = "hide"}
-int_obj = createLiger(list(tasic = tasic, seqfish = seqfish))
+int_obj = createLiger(list(sc_rnaseq = tasic, spatial = seqfish))
 int_obj %<>% liger::normalize() %>% 
     liger::selectGenes() %>% 
     liger::scaleNotCenter() %>% 
