@@ -177,7 +177,7 @@
 <p>To establish a baseline as the level of structure and clustering accuracy that can be found for each dataset with LIGER, we run individual analyses.</p>
 <p>The analysis includes 1. Normalization, to standardize the counts per sample 2. Variable gene selection 3. Scaling, but not centering as not to violate the nonnegativity constraint 4. Integrative non-negative matrix factorization, or essentially just NMF in the case shown here in which one dataset is provided 5. Quantile normalization, primarily used for aligning multiple datasets. 6. Cluster identification with the Louvain algorithm 7. UMAP, for visualization</p>
 <p>First, we run the analysis on the scRNA-seq data</p>
-<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="no">tasic_obj</span> <span class="kw">=</span> <span class="fu">createLiger</span>(<span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">tasic</span> <span class="kw">=</span> <span class="no">tasic</span>))
+<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="no">tasic_obj</span> <span class="kw">=</span> <span class="fu">createLiger</span>(<span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">sc_rnaseq</span> <span class="kw">=</span> <span class="no">tasic</span>))
 <span class="no">tasic_obj</span> <span class="kw">%&lt;&gt;%</span> <span class="kw pkg">liger</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/liger/man/normalize.html">normalize</a></span>() <span class="kw">%&gt;%</span>
     <span class="kw pkg">liger</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/liger/man/selectGenes.html">selectGenes</a></span>() <span class="kw">%&gt;%</span>
     <span class="kw pkg">liger</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/liger/man/scaleNotCenter.html">scaleNotCenter</a></span>() <span class="kw">%&gt;%</span>
@@ -186,7 +186,7 @@
     <span class="kw pkg">liger</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/liger/man/louvainCluster.html">louvainCluster</a></span>() <span class="kw">%&gt;%</span>
     <span class="kw pkg">liger</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/liger/man/runUMAP.html">runUMAP</a></span>()</pre></body></html></div>
 <p>Then, we run it on the seqFISH data</p>
-<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="no">seq_obj</span> <span class="kw">=</span> <span class="fu">createLiger</span>(<span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">seqfish</span> <span class="kw">=</span> <span class="no">seqfish</span>))
+<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="no">seq_obj</span> <span class="kw">=</span> <span class="fu">createLiger</span>(<span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">spatial</span> <span class="kw">=</span> <span class="no">seqfish</span>))
 <span class="no">seq_obj</span> <span class="kw">%&lt;&gt;%</span> <span class="kw pkg">liger</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/liger/man/normalize.html">normalize</a></span>() <span class="kw">%&gt;%</span>
     <span class="kw pkg">liger</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/liger/man/selectGenes.html">selectGenes</a></span>() <span class="kw">%&gt;%</span>
     <span class="kw pkg">liger</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/liger/man/scaleNotCenter.html">scaleNotCenter</a></span>() <span class="kw">%&gt;%</span>
@@ -220,7 +220,7 @@
 <pre><code>## [1] "seqfish purity: 0.546023794614903"</code></pre>
 <p>This confirms that the single cell data had somewhat better clustering accuracy.</p>
 <p>Now, let’s try to integrate the datasets, using almost the same workflow as before but with both datasets provided for object creation.</p>
-<div class="sourceCode" id="cb23"><html><body><pre class="r"><span class="no">int_obj</span> <span class="kw">=</span> <span class="fu">createLiger</span>(<span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">tasic</span> <span class="kw">=</span> <span class="no">tasic</span>, <span class="kw">seqfish</span> <span class="kw">=</span> <span class="no">seqfish</span>))
+<div class="sourceCode" id="cb23"><html><body><pre class="r"><span class="no">int_obj</span> <span class="kw">=</span> <span class="fu">createLiger</span>(<span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">sc_rnaseq</span> <span class="kw">=</span> <span class="no">tasic</span>, <span class="kw">spatial</span> <span class="kw">=</span> <span class="no">seqfish</span>))
 <span class="no">int_obj</span> <span class="kw">%&lt;&gt;%</span> <span class="kw pkg">liger</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/liger/man/normalize.html">normalize</a></span>() <span class="kw">%&gt;%</span>
     <span class="kw pkg">liger</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/liger/man/selectGenes.html">selectGenes</a></span>() <span class="kw">%&gt;%</span>
     <span class="kw pkg">liger</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/liger/man/scaleNotCenter.html">scaleNotCenter</a></span>() <span class="kw">%&gt;%</span>
@@ -247,9 +247,9 @@
 <div class="sourceCode" id="cb31"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"agreement:"</span>,<span class="fu">calcAgreement</span>(<span class="no">int_obj</span>)))</pre></body></html></div>
 <pre><code>## [1] "Reducing dimensionality using NMF"
 ## 
-## Converged in 0.01548982 seconds, 167 iterations. Objective: 5408.016 
+## Converged in 0.01860118 seconds, 167 iterations. Objective: 5408.016 
 ## 
-## Converged in 0.01904821 seconds, 188 iterations. Objective: 8577.805 
+## Converged in 0.01765323 seconds, 188 iterations. Objective: 8577.805 
 ## [1] "agreement: 0.089592886480605"</code></pre>
 <div class="sourceCode" id="cb33"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"alignment:"</span>,<span class="fu">calcAlignment</span>(<span class="no">int_obj</span>)))</pre></body></html></div>
 <pre><code>## [1] "alignment: 0.804064439004953"</code></pre>
