@@ -17,9 +17,7 @@ Depends:
     NNLM,
     ggplot2,
     cowplot,
-    Seurat,
-    liger,
-    reticulate
+    liger
 Remotes:
     MacoskoLab/liger,
     linxihui/NNLM
